@@ -3,11 +3,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t chuanhuiloh/react-test -f./client/Dockerfile.dev ./client
+  - docker build -t chuanhuiloh/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true chuanhuiloh/react-test npm test
-  
+
 after_success:
   - docker build -t chuanhuiloh/multi-client ./client
   - docker build -t chuanhuiloh/multi-nginx ./nginx
